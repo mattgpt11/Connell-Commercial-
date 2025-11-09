@@ -22,7 +22,7 @@ const founders = [
     specialty: "Operations & Quality Control",
   },
   {
-    name: "Charles Villareal",
+    name: "Charles Villarreal",
     title: "CFO",
     bio: "With over 20 years of experience leading finance, accounting, and operations across multiple industries, Charles brings a powerful combination of financial discipline and technological innovation to Connell Commercial. His leadership ensures every project is backed by strong fiscal management, efficient systems, and a commitment to excellence in execution and transparency.",
     image: "/images/charles-villareal-headshot.png",
