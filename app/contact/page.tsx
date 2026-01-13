@@ -115,7 +115,7 @@ export default function ContactPage() {
                   Need immediate assistance? We provide 24/7 emergency services for critical construction issues.
                 </p>
                 <a
-                  href="tel:210-632-7430"
+                  href="tel:210-573-7157"
                   className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors"
                 >
                   <Phone className="h-4 w-4" />
