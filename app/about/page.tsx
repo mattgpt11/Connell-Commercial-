@@ -11,7 +11,7 @@ const founders = [
     bio: "A U.S. Navy veteran with top secret clearance, Mike brings global experience and hands-on construction expertise to his role as CEO of Connell Commercial. After the Navy, he helped a fast-rising startup train teams worldwide to fly and manage drones—sharpening his leadership and technical edge. With over a decade in the field, Mike leads Connell Commercial with precision, innovation, and the same discipline that defined his military service.",
     image: "/images/mike-connell-headshot.jpeg",
     experience: "10+ Years Experience",
-    specialty: "Project Leadership & Business Development",
+    specialty: "Strategic Leadership & Business Development",
   },
   {
     name: "Philip Connell",
@@ -27,7 +27,7 @@ const founders = [
     bio: "With over 20 years of experience leading finance, accounting, and operations across multiple industries, Charles brings a powerful combination of financial discipline and technological innovation to Connell Commercial. His leadership ensures every project is backed by strong fiscal management, efficient systems, and a commitment to excellence in execution and transparency.",
     image: "/images/charles-villareal-headshot.png",
     experience: "20+ Years Experience",
-    specialty: "Project Management & Coordination",
+    specialty: "Financial & Account Management",
   },
 ]
 

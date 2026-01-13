@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Phone, Mail, MapPin, Clock } from "lucide-react"
+import { Phone, Mail, MapPin, Clock, Printer } from "lucide-react"
 
 export default function Footer() {
   return (
@@ -74,9 +74,15 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <Phone className="h-5 w-5 text-yellow-400 mt-1 flex-shrink-0" />
                 <div>
-                  <a href="tel:210-555-0123" className="text-gray-300 hover:text-yellow-400 transition-colors">
-                    (210) 555-0123
+                  <a href="tel:210-632-7430" className="text-gray-300 hover:text-yellow-400 transition-colors">
+                    210-632-7430
                   </a>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <Printer className="h-5 w-5 text-yellow-400 mt-1 flex-shrink-0" />
+                <div>
+                  <span className="text-gray-300">210-855-4466 (Fax)</span>
                 </div>
               </li>
               <li className="flex items-start gap-3">

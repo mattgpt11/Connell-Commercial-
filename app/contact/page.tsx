@@ -2,7 +2,7 @@ import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import Image from "next/image"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Phone, Mail, MapPin, Clock, Send } from "lucide-react"
+import { Phone, Mail, MapPin, Clock, Send, Printer } from "lucide-react"
 
 export default function ContactPage() {
   return (
@@ -48,10 +48,21 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-white mb-2">Phone</h3>
-                    <a href="tel:210-555-0123" className="text-slate-300 hover:text-yellow-400 transition-colors">
-                      (210) 555-0123
+                    <a href="tel:210-632-7430" className="text-slate-300 hover:text-yellow-400 transition-colors">
+                      (210-632-7430
                     </a>
                     <p className="text-slate-400 text-sm mt-1">Mon - Fri: 7:00 AM - 6:00 PM</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-yellow-500 rounded-lg">
+                    <Printer className="h-6 w-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-white mb-2">Fax</h3>
+                    <p className="text-slate-300">(210) 855-4466</p>
+                    <p className="text-slate-400 text-sm mt-1">24/7 Available</p>
                   </div>
                 </div>
 
@@ -104,7 +115,7 @@ export default function ContactPage() {
                   Need immediate assistance? We provide 24/7 emergency services for critical construction issues.
                 </p>
                 <a
-                  href="tel:210-555-0123"
+                  href="tel:210-632-7430"
                   className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors"
                 >
                   <Phone className="h-4 w-4" />
@@ -177,7 +188,7 @@ export default function ContactPage() {
                         id="phone"
                         name="phone"
                         className="w-full px-3 py-2 bg-slate-600 border border-slate-500 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
-                        placeholder="(210) 555-0123"
+                        placeholder="210-632-7430"
                       />
                     </div>
 
