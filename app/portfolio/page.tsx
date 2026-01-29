@@ -116,12 +116,11 @@ export default function PortfolioPage() {
                 key={project.id}
                 className="bg-slate-700/50 backdrop-blur-sm border-slate-600 text-white group hover:bg-slate-600/50 transition-all duration-300"
               >
-                <div className="relative h-64 rounded-t-lg overflow-hidden bg-slate-600">
-                  <Image
+                <div className="rounded-t-lg bg-slate-600 p-4">
+                  <img
                     src={project.image || "/placeholder.svg"}
                     alt={project.title}
-                    fill
-                    className="object-contain group-hover:scale-105 transition-transform duration-300 p-4"
+                    className="w-full h-auto group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute top-4 left-4">
                     <span className="bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
