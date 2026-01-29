@@ -104,7 +104,7 @@ export default function HomePage() {
 
           <PortfolioSlideshow />
 
-          <div className="text-center mt-12">
+          <div className="flex justify-center mt-12">
             <Link
               href="/portfolio"
               className="inline-flex items-center gap-2 bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-4 rounded-lg font-semibold transition-colors"
@@ -158,12 +158,14 @@ export default function HomePage() {
                 </div>
               </div>
 
-              <Link
-                href="/process"
-                className="inline-flex items-center bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-4 rounded-lg font-semibold transition-colors"
-              >
-                See Our Process
-              </Link>
+              <div className="flex justify-center">
+                <Link
+                  href="/process"
+                  className="inline-flex items-center bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-4 rounded-lg font-semibold transition-colors"
+                >
+                  See Our Process
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -178,21 +180,13 @@ export default function HomePage() {
               Contact our veteran-led team today for a free consultation. Let's discuss how we can bring your
               construction vision to life with integrity, precision, and Texas pride.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="tel:210-555-0123"
-                className="inline-flex items-center gap-2 bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-4 rounded-lg font-semibold transition-colors text-lg"
-              >
-                <Phone className="h-5 w-5" />
-                Call (210) 555-0123
-              </a>
-              <Link
-                href="/contact"
-                className="border border-slate-400 text-white hover:bg-slate-600 px-8 py-4 rounded-lg font-semibold transition-colors text-lg"
-              >
-                Get Free Quote
-              </Link>
-            </div>
+            <a
+              href="tel:210-555-0123"
+              className="inline-flex items-center gap-2 bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-4 rounded-lg font-semibold transition-colors text-lg"
+            >
+              <Phone className="h-5 w-5" />
+              Call (210) 555-0123
+            </a>
           </div>
         </div>
       </section>
