@@ -9,7 +9,7 @@ const founders = [
     name: "Mike Connell",
     title: "Co-Founder & CEO",
     bio: "A U.S. Navy veteran with top secret clearance, Mike brings global experience and hands-on construction expertise to his role as CEO of Connell Commercial. After the Navy, he helped a fast-rising startup train teams worldwide to fly and manage drones—sharpening his leadership and technical edge. With over a decade in the field, Mike leads Connell Commercial with precision, innovation, and the same discipline that defined his military service.",
-    image: "/images/mike-connell-headshot.jpeg",
+    image: "/images/mike-connell-headshot.jpg",
     experience: "10+ Years Experience",
     specialty: "Strategic Leadership & Business Development",
   },
@@ -156,7 +156,7 @@ export default function AboutPage() {
 
           {/* Cross-Page Links */}
           <div className="grid md:grid-cols-2 gap-8 mb-20">
-            <div className="bg-slate-700/50 backdrop-blur-sm border border-slate-600 p-8 rounded-lg">
+            <div className="bg-slate-700/50 backdrop-blur-sm border border-slate-600 p-8 rounded-lg flex flex-col items-center text-center">
               <h3 className="text-2xl font-bold text-white mb-4">See Our Work</h3>
               <p className="text-slate-300 mb-6 leading-relaxed">
                 Explore our portfolio of successful projects across Texas, showcasing our commitment to excellence and
@@ -170,7 +170,7 @@ export default function AboutPage() {
               </Link>
             </div>
 
-            <div className="bg-slate-700/50 backdrop-blur-sm border border-slate-600 p-8 rounded-lg">
+            <div className="bg-slate-700/50 backdrop-blur-sm border border-slate-600 p-8 rounded-lg flex flex-col items-center text-center">
               <h3 className="text-2xl font-bold text-white mb-4">Our Process</h3>
               <p className="text-slate-300 mb-6 leading-relaxed">
                 Discover how our military-trained approach ensures systematic execution and superior results in every
@@ -194,20 +194,12 @@ export default function AboutPage() {
                 range of general contractor services designed to bring your vision to life while honoring our commitment
                 to excellence.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link
-                  href="/services"
-                  className="bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-4 rounded-lg font-semibold transition-colors text-lg"
-                >
-                  View Our Services
-                </Link>
-                <Link
-                  href="/contact"
-                  className="border border-slate-400 text-white hover:bg-slate-600 px-8 py-4 rounded-lg font-semibold transition-colors text-lg"
-                >
-                  Get Free Quote
-                </Link>
-              </div>
+              <Link
+                href="/services"
+                className="bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-4 rounded-lg font-semibold transition-colors text-lg"
+              >
+                View Our Services
+              </Link>
             </div>
           </div>
         </div>
