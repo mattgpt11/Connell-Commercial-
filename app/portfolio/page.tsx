@@ -13,8 +13,7 @@ export default function PortfolioPage() {
       category: "Ground-Up Construction",
       location: "San Antonio, TX",
       year: "2024",
-      image:
-        "/images/barnes-20and-20nobel-202.jpg",
+      image: "/images/barnes-and-nobel.jpg",
       description:
         "Complete ground-up construction of a major retail bookstore with comprehensive site work, utilities installation, and structural framing.",
       features: [
@@ -31,7 +30,7 @@ export default function PortfolioPage() {
       category: "Interior Finish-Outs",
       location: "Austin, TX",
       year: "2024",
-      image: "/images/tesla-202.jpg",
+      image: "/images/tesla-2.jpg",
       description:
         "High-end commercial restroom installation for Tesla manufacturing facility featuring custom tile work and modern plumbing fixtures.",
       features: ["Custom tile installation", "Commercial plumbing systems", "Modern fixtures", "ADA compliance"],
@@ -43,7 +42,7 @@ export default function PortfolioPage() {
       category: "Government Projects",
       location: "Bexar County, TX",
       year: "2023",
-      image: "/images/bexar-20fire.jpg",
+      image: "/images/bexar-fire.jpg",
       description:
         "New fire station construction with comprehensive mechanical systems including extensive HVAC ductwork and emergency response infrastructure.",
       features: ["HVAC systems installation", "Emergency infrastructure", "Mechanical systems", "Wood framing"],
@@ -55,8 +54,7 @@ export default function PortfolioPage() {
       category: "Municipal Projects",
       location: "Boerne, TX",
       year: "2023",
-      image:
-        "/images/boerne-20aquatic.jpg",
+      image: "/images/boerne-aquatic.jpg",
       description:
         "Aquatic facility infrastructure project featuring extensive underground utility work, water line installation, and site preparation.",
       features: ["Underground utilities", "Water system installation", "Site preparation", "Pipeline infrastructure"],
@@ -68,8 +66,7 @@ export default function PortfolioPage() {
       category: "Remodels & Renovations",
       location: "San Antonio, TX",
       year: "2023",
-      image:
-        "/images/guardian-20house.jpg",
+      image: "/images/guardian-house.jpg",
       description:
         "Comprehensive interior renovation featuring radiant floor heating installation, modern finishes, and complete space transformation.",
       features: ["Radiant floor heating", "Modern interior finishes", "Complete renovation", "Energy efficiency"],
@@ -81,8 +78,7 @@ export default function PortfolioPage() {
       category: "Ground-Up Construction",
       location: "Odessa, TX",
       year: "2022",
-      image:
-        "/images/harmony-20odessa.jpg",
+      image: "/images/harmony-odessa.jpg",
       description:
         "Large-scale industrial facility construction with exposed structural steel, comprehensive mechanical systems, and modern warehouse design.",
       features: ["Steel frame construction", "HVAC duct systems", "Industrial infrastructure", "Warehouse design"],

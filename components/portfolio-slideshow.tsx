@@ -9,46 +9,42 @@ const portfolioItems = [
     id: 1,
     title: "Barnes & Noble Retail Build-Out",
     category: "Ground-up construction",
-    image:
-      "/images/barnes-20and-20nobel.jpg",
+    image: "/images/barnes-and-nobel.jpg",
     description: "Large-scale retail construction with underground utilities and site preparation",
   },
   {
     id: 2,
     title: "Tesla Facility Restrooms",
     category: "Interior construction",
-    image: "/images/tesla-201.jpg",
+    image: "/images/tesla-1.jpg",
     description: "Commercial restroom installation with custom tile work and plumbing systems",
   },
   {
     id: 3,
     title: "Bexar County Fire Station",
     category: "Government construction",
-    image: "/images/bexar-20fire.jpg",
+    image: "/images/bexar-fire.jpg",
     description: "Fire station build with comprehensive HVAC ductwork and mechanical systems",
   },
   {
     id: 4,
     title: "Boerne Aquatic Center",
     category: "Municipal projects",
-    image:
-      "/images/boerne-20aquatic.jpg",
+    image: "/images/boerne-aquatic.jpg",
     description: "Outdoor utility infrastructure for aquatic facility with extensive underground piping",
   },
   {
     id: 5,
     title: "Guardian House Renovation",
     category: "Remodel & renovation",
-    image:
-      "/images/guardian-20house.jpg",
+    image: "/images/guardian-house.jpg",
     description: "Interior renovation featuring radiant floor heating installation and modern finishes",
   },
   {
     id: 6,
     title: "Harmony Odessa Facility",
     category: "Interior construction",
-    image:
-      "/images/harmony-20odessa.jpg",
+    image: "/images/harmony-odessa.jpg",
     description: "Commercial facility with exposed structural systems and comprehensive mechanical work",
   },
 ]
