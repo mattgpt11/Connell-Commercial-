@@ -34,8 +34,8 @@ export default function HomePage() {
                 Learn Our Story
               </Link>
             </div>
-            <div className="relative h-96 rounded-lg overflow-hidden">
-              <Image src="/images/construction-team.jpeg" alt="Connell Commercial Team" fill className="object-cover" />
+            <div className="relative h-96 rounded-lg overflow-hidden bg-slate-700">
+              <Image src="/images/construction-team.jpeg" alt="Connell Commercial Team" fill className="object-contain p-4" />
             </div>
           </div>
         </div>
@@ -120,8 +120,8 @@ export default function HomePage() {
       <section className="py-20 bg-slate-800">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-            <div className="relative h-96 rounded-lg overflow-hidden">
-              <Image src="/images/project-management.jpeg" alt="Construction Process" fill className="object-cover" />
+            <div className="relative h-96 rounded-lg overflow-hidden bg-slate-700">
+              <Image src="/images/project-management.jpeg" alt="Construction Process" fill className="object-contain p-4" />
             </div>
             <div>
               <h2 className="text-4xl font-bold text-white mb-6">Our Proven Process</h2>
