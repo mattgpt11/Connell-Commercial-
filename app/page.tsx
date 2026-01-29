@@ -3,7 +3,7 @@ import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import Image from "next/image"
 import Link from "next/link"
-import { Building2, Users, Cog, Phone, Eye } from "lucide-react"
+import { Building2, Zap, Cog, Phone, Eye, Users } from "lucide-react"
 import PortfolioSlideshow from "@/components/portfolio-slideshow"
 
 export default function HomePage() {
@@ -71,8 +71,8 @@ export default function HomePage() {
             </Link>
 
             <Link href="/services#beverage-station-equipment" className="group">
-              <div className="bg-slate-700/50 backdrop-blur-sm border border-slate-600 p-8 rounded-lg text-center group-hover:bg-slate-600/50 transition-all">
-                <Users className="h-12 w-12 text-yellow-400 mx-auto mb-4" />
+              <div className="bg-slate-700/50 backdrop-blur-sm border border-slate-600 p-8 rounded-lg text-center group-hover:bg-slate-600/50 transition-all h-full">
+                <Zap className="h-12 w-12 text-yellow-400 mx-auto mb-4" />
                 <h3 className="text-xl font-bold text-white mb-4">Beverage Equipment</h3>
                 <p className="text-slate-300 mb-6">
                   Installation and changeouts for beverage areas with full utility integration.

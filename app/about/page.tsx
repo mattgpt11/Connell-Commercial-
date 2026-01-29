@@ -9,7 +9,7 @@ const founders = [
     name: "Mike Connell",
     title: "Co-Founder & CEO",
     bio: "A U.S. Navy veteran with top secret clearance, Mike brings global experience and hands-on construction expertise to his role as CEO of Connell Commercial. After the Navy, he helped a fast-rising startup train teams worldwide to fly and manage drones—sharpening his leadership and technical edge. With over a decade in the field, Mike leads Connell Commercial with precision, innovation, and the same discipline that defined his military service.",
-    image: "/images/mike-connell-headshot.jpeg",
+    image: "/images/mike-20connell-20headshot.jpg",
     experience: "10+ Years Experience",
     specialty: "Strategic Leadership & Business Development",
   },
