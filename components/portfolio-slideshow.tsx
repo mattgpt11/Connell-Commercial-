@@ -82,19 +82,20 @@ export default function PortfolioSlideshow() {
   return (
     <div className="relative max-w-6xl mx-auto">
       {/* Main Slideshow */}
-      <div className="relative h-96 md:h-[500px] rounded-lg overflow-hidden group">
+      <div className="relative w-full rounded-lg overflow-hidden group bg-slate-900">
         {portfolioItems.map((item, index) => (
           <div
             key={item.id}
-            className={`absolute inset-0 transition-opacity duration-500 ${
+            className={`relative w-full transition-opacity duration-500 ${
               index === currentSlide ? "opacity-100" : "opacity-0"
             }`}
           >
             <Image
               src={item.image || "/placeholder.svg"}
               alt={item.title}
-              fill
-              className="object-contain"
+              width={1200}
+              height={600}
+              className="w-full h-auto"
               priority={index === 0}
             />
             <div className="absolute inset-0 bg-black/40" />
