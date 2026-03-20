@@ -83,13 +83,11 @@ export default function AboutPage() {
                 >
                   {/* Image */}
                   <div className="flex-1">
-                    <div className="relative w-80 h-80 mx-auto">
-                      <Image
+                    <div className="mx-auto max-w-sm">
+                      <img
                         src={founder.image || "/placeholder.svg"}
                         alt={founder.name}
-                        fill
-                        className="rounded-lg object-cover"
-                        priority={index === 0}
+                        className="rounded-lg w-full h-auto"
                       />
                     </div>
                   </div>

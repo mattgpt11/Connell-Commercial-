@@ -53,7 +53,7 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
             <Link href="/services#ground-up-construction" className="group">
-              <div className="bg-slate-700/50 backdrop-blur-sm border border-slate-600 p-8 rounded-lg text-center group-hover:bg-slate-600/50 transition-all">
+              <div className="bg-slate-700/50 backdrop-blur-sm border border-slate-600 p-8 rounded-lg text-center group-hover:bg-slate-600/50 transition-all h-full">
                 <Building2 className="h-12 w-12 text-yellow-400 mx-auto mb-4" />
                 <h3 className="text-xl font-bold text-white mb-4">Ground-Up Construction</h3>
                 <p className="text-slate-300 mb-6">
@@ -63,7 +63,7 @@ export default function HomePage() {
             </Link>
 
             <Link href="/services#interior-finish-outs" className="group">
-              <div className="bg-slate-700/50 backdrop-blur-sm border border-slate-600 p-8 rounded-lg text-center group-hover:bg-slate-600/50 transition-all">
+              <div className="bg-slate-700/50 backdrop-blur-sm border border-slate-600 p-8 rounded-lg text-center group-hover:bg-slate-600/50 transition-all h-full">
                 <Cog className="h-12 w-12 text-yellow-400 mx-auto mb-4" />
                 <h3 className="text-xl font-bold text-white mb-4">Interior Finish-Outs</h3>
                 <p className="text-slate-300 mb-6">Transform raw shells into branded, functional environments.</p>
