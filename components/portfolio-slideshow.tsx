@@ -82,12 +82,12 @@ export default function PortfolioSlideshow() {
   return (
     <div className="relative max-w-6xl mx-auto">
       {/* Main Slideshow */}
-      <div className="relative w-full group bg-slate-900">
+      <div className="relative w-full group bg-slate-900 overflow-hidden">
         {portfolioItems.map((item, index) => (
           <div
             key={item.id}
-            className={`relative w-full transition-opacity duration-500 ${
-              index === currentSlide ? "opacity-100" : "opacity-0"
+            className={`w-full transition-opacity duration-500 ${
+              index === currentSlide ? "relative opacity-100" : "absolute inset-0 opacity-0 pointer-events-none"
             }`}
           >
             <img

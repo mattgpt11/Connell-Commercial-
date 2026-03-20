@@ -2,7 +2,7 @@ import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import Image from "next/image"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Phone, Mail, MapPin, Clock, Send, Printer } from "lucide-react"
+import { Phone, Mail, MapPin, Clock, Send, Printer, Shield, Zap, Award } from "lucide-react"
 
 export default function ContactPage() {
   return (
@@ -49,7 +49,7 @@ export default function ContactPage() {
                   <div>
                     <h3 className="text-xl font-bold text-white mb-2">Phone</h3>
                     <a href="tel:210-632-7430" className="text-slate-300 hover:text-yellow-400 transition-colors">
-                      (210-632-7430
+                      (210) 632-7430
                     </a>
                     <p className="text-slate-400 text-sm mt-1">Mon - Fri: 7:00 AM - 6:00 PM</p>
                   </div>
@@ -310,7 +310,7 @@ export default function ContactPage() {
             <div className="grid md:grid-cols-3 gap-8">
               <div className="text-center">
                 <div className="w-16 h-16 bg-yellow-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-2xl">🇺🇸</span>
+                  <Shield className="h-8 w-8 text-yellow-400" />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-4">Veteran Owned</h3>
                 <p className="text-slate-300 leading-relaxed">
@@ -319,7 +319,7 @@ export default function ContactPage() {
               </div>
               <div className="text-center">
                 <div className="w-16 h-16 bg-yellow-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-2xl">⚡</span>
+                  <Zap className="h-8 w-8 text-yellow-400" />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-4">Licensed & Insured</h3>
                 <p className="text-slate-300 leading-relaxed">
@@ -328,7 +328,7 @@ export default function ContactPage() {
               </div>
               <div className="text-center">
                 <div className="w-16 h-16 bg-yellow-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-2xl">🏆</span>
+                  <Award className="h-8 w-8 text-yellow-400" />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-4">Proven Excellence</h3>
                 <p className="text-slate-300 leading-relaxed">

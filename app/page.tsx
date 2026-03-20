@@ -181,11 +181,11 @@ export default function HomePage() {
               construction vision to life with integrity, precision, and Texas pride.
             </p>
             <a
-              href="tel:210-555-0123"
+              href="tel:210-632-7430"
               className="inline-flex items-center gap-2 bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-4 rounded-lg font-semibold transition-colors text-lg"
             >
               <Phone className="h-5 w-5" />
-              Call (210) 555-0123
+              Call (210) 632-7430
             </a>
           </div>
         </div>

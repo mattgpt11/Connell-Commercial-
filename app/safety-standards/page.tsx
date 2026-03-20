@@ -137,7 +137,7 @@ export default function SafetyStandardsPage() {
                   <p>
                     <strong>Connell Commercial Safety Hotline</strong>
                   </p>
-                  <p>Phone: (210) 555-0123</p>
+                  <p>Phone: (210) 632-7430</p>
                   <p>Email: safety@connellcommercial.com</p>
                   <p className="text-sm text-slate-400 mt-2">
                     Available 24/7 for safety concerns or incident reporting
