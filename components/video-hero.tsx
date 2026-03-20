@@ -7,8 +7,28 @@ export default function VideoHero() {
   const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch(console.error)
+    const video = videoRef.current
+    if (!video) return
+
+    let isMounted = true
+
+    const playVideo = async () => {
+      try {
+        if (isMounted && video) {
+          await video.play()
+        }
+      } catch (error) {
+        // Ignore AbortError which happens when component unmounts during play
+        if (error instanceof Error && error.name !== "AbortError") {
+          console.error(error)
+        }
+      }
+    }
+
+    playVideo()
+
+    return () => {
+      isMounted = false
     }
   }, [])
 
