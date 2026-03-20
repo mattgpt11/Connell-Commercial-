@@ -22,17 +22,14 @@ export default function Navigation() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3">
+          <Link href="/" className="flex items-center">
             <Image
-              src="/images/connell-logo-icon.png"
+              src="/images/connell-logo.png"
               alt="Connell Commercial"
-              width={64}
-              height={64}
-              className="h-16 w-auto"
+              width={200}
+              height={60}
+              className="h-14 w-auto"
             />
-            <div className="text-white font-serif text-xl font-normal tracking-wide hover:text-yellow-400 transition-colors">
-              CONNELL COMMERCIAL
-            </div>
           </Link>
 
           {/* Desktop Navigation */}
