@@ -114,7 +114,7 @@ export default function PortfolioPage() {
             {projects.map((project) => (
               <Card
                 key={project.id}
-                className="bg-slate-700/50 backdrop-blur-sm border-slate-600 text-white group hover:bg-slate-600/50 transition-all duration-300"
+                className="bg-slate-700/50 backdrop-blur-sm border-slate-600 text-white group hover:bg-slate-600/50 transition-all duration-300 flex flex-col h-full"
               >
                 <div className="relative rounded-t-lg bg-slate-600 p-4 overflow-hidden">
                   <img
@@ -128,7 +128,7 @@ export default function PortfolioPage() {
                     </span>
                   </div>
                 </div>
-                <CardHeader>
+                <CardHeader className="flex-grow-0">
                   <CardTitle className="text-xl text-white mb-2">{project.title}</CardTitle>
                   <div className="flex items-center gap-4 text-slate-400 text-sm mb-3">
                     <div className="flex items-center gap-1">
@@ -140,9 +140,9 @@ export default function PortfolioPage() {
                       {project.year}
                     </div>
                   </div>
-                  <CardDescription className="text-slate-300 leading-relaxed">{project.description}</CardDescription>
+                  <CardDescription className="text-slate-300 leading-relaxed line-clamp-3">{project.description}</CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="flex-grow">
                   <div className="mb-4">
                     <div className="flex items-center gap-2 text-slate-400 text-sm mb-3">
                       <Building2 className="h-4 w-4" />

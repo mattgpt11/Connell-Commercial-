@@ -82,7 +82,7 @@ export default function PortfolioSlideshow() {
   return (
     <div className="relative max-w-6xl mx-auto">
       {/* Main Slideshow */}
-      <div className="relative w-full group bg-slate-900 overflow-hidden rounded-lg max-h-[400px]">
+      <div className="relative w-full group bg-slate-900 overflow-hidden rounded-lg">
         {portfolioItems.map((item, index) => (
           <div
             key={item.id}
@@ -93,7 +93,7 @@ export default function PortfolioSlideshow() {
             <img
               src={item.image || "/placeholder.svg"}
               alt={item.title}
-              className="w-full h-[400px] object-cover"
+              className="w-full h-[300px] object-cover"
             />
             <div className="absolute inset-0 bg-black/40" />
             <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
