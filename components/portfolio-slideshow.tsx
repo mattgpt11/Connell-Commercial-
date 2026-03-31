@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Image from "next/image"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react"
 
 const portfolioItems = [
   {
@@ -82,7 +82,7 @@ export default function PortfolioSlideshow() {
   return (
     <div className="relative max-w-6xl mx-auto">
       {/* Main Slideshow */}
-      <div className="relative w-full group bg-slate-900 overflow-hidden">
+      <div className="relative w-full group bg-slate-900 overflow-hidden rounded-lg max-h-[400px]">
         {portfolioItems.map((item, index) => (
           <div
             key={item.id}
@@ -93,7 +93,7 @@ export default function PortfolioSlideshow() {
             <img
               src={item.image || "/placeholder.svg"}
               alt={item.title}
-              className="w-full h-auto block"
+              className="w-full h-[400px] object-cover"
             />
             <div className="absolute inset-0 bg-black/40" />
             <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
@@ -155,9 +155,10 @@ export default function PortfolioSlideshow() {
       <div className="text-center mt-4">
         <button
           onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-          className="text-slate-400 hover:text-yellow-400 text-sm transition-colors"
+          className="inline-flex items-center gap-2 text-slate-400 hover:text-yellow-400 text-sm transition-colors"
         >
-          {isAutoPlaying ? "⏸️ Pause" : "▶️ Play"} Slideshow
+          {isAutoPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
+          {isAutoPlaying ? "Pause" : "Play"} Slideshow
         </button>
       </div>
     </div>
