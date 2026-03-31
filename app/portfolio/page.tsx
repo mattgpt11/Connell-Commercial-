@@ -13,8 +13,7 @@ export default function PortfolioPage() {
       category: "Ground-Up Construction",
       location: "San Antonio, TX",
       year: "2024",
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Barnes%20and%20nobel%202-v7wrGt7U2RP5b8e3vLjqRwRcZYH27r.jpg",
+      image: "/images/barnes-and-nobel.jpg",
       description:
         "Complete ground-up construction of a major retail bookstore with comprehensive site work, utilities installation, and structural framing.",
       features: [
@@ -31,7 +30,7 @@ export default function PortfolioPage() {
       category: "Interior Finish-Outs",
       location: "Austin, TX",
       year: "2024",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Tesla%202-yPPL8HGPlc26BREhBGEzZybPVo7xp3.jpg",
+      image: "/images/tesla-2.jpg",
       description:
         "High-end commercial restroom installation for Tesla manufacturing facility featuring custom tile work and modern plumbing fixtures.",
       features: ["Custom tile installation", "Commercial plumbing systems", "Modern fixtures", "ADA compliance"],
@@ -43,7 +42,7 @@ export default function PortfolioPage() {
       category: "Government Projects",
       location: "Bexar County, TX",
       year: "2023",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Bexar%20fire-GmpSAF7YPX1yY4pwz8tuAwz8WrQzO3.jpg",
+      image: "/images/bexar-fire.jpg",
       description:
         "New fire station construction with comprehensive mechanical systems including extensive HVAC ductwork and emergency response infrastructure.",
       features: ["HVAC systems installation", "Emergency infrastructure", "Mechanical systems", "Wood framing"],
@@ -55,8 +54,7 @@ export default function PortfolioPage() {
       category: "Municipal Projects",
       location: "Boerne, TX",
       year: "2023",
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Boerne%20aquatic-rlVgpcptaoJRWnRpTq8FW2zqeb4amu.jpg",
+      image: "/images/boerne-aquatic.jpg",
       description:
         "Aquatic facility infrastructure project featuring extensive underground utility work, water line installation, and site preparation.",
       features: ["Underground utilities", "Water system installation", "Site preparation", "Pipeline infrastructure"],
@@ -68,8 +66,7 @@ export default function PortfolioPage() {
       category: "Remodels & Renovations",
       location: "San Antonio, TX",
       year: "2023",
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Guardian%20House-R9W8fTnaF8A4CJwU6RcO3Tg2WRPSOO.jpg",
+      image: "/images/guardian-house.jpg",
       description:
         "Comprehensive interior renovation featuring radiant floor heating installation, modern finishes, and complete space transformation.",
       features: ["Radiant floor heating", "Modern interior finishes", "Complete renovation", "Energy efficiency"],
@@ -81,8 +78,7 @@ export default function PortfolioPage() {
       category: "Ground-Up Construction",
       location: "Odessa, TX",
       year: "2022",
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Harmony%20odessa-WyEF8ptHcXBigiFZ3UoCOx6FstgNNR.jpg",
+      image: "/images/harmony-odessa.jpg",
       description:
         "Large-scale industrial facility construction with exposed structural steel, comprehensive mechanical systems, and modern warehouse design.",
       features: ["Steel frame construction", "HVAC duct systems", "Industrial infrastructure", "Warehouse design"],
@@ -120,14 +116,13 @@ export default function PortfolioPage() {
                 key={project.id}
                 className="bg-slate-700/50 backdrop-blur-sm border-slate-600 text-white group hover:bg-slate-600/50 transition-all duration-300"
               >
-                <div className="relative h-48 rounded-t-lg overflow-hidden">
-                  <Image
+                <div className="relative rounded-t-lg bg-slate-600 p-4 overflow-hidden">
+                  <img
                     src={project.image || "/placeholder.svg"}
                     alt={project.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-auto group-hover:scale-105 transition-transform duration-300"
                   />
-                  <div className="absolute top-4 left-4">
+                  <div className="absolute top-6 left-6">
                     <span className="bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
                       {project.category}
                     </span>

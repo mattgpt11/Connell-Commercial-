@@ -34,8 +34,8 @@ export default function HomePage() {
                 Learn Our Story
               </Link>
             </div>
-            <div className="relative h-96 rounded-lg overflow-hidden">
-              <Image src="/images/construction-team.jpeg" alt="Connell Commercial Team" fill className="object-cover" />
+            <div className="relative h-96 rounded-lg overflow-hidden bg-slate-700">
+              <Image src="/images/construction-team.jpeg" alt="Connell Commercial Team" fill className="object-contain p-4" />
             </div>
           </div>
         </div>
@@ -53,7 +53,7 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
             <Link href="/services#ground-up-construction" className="group">
-              <div className="bg-slate-700/50 backdrop-blur-sm border border-slate-600 p-8 rounded-lg text-center group-hover:bg-slate-600/50 transition-all">
+              <div className="bg-slate-700/50 backdrop-blur-sm border border-slate-600 p-8 rounded-lg text-center group-hover:bg-slate-600/50 transition-all h-full">
                 <Building2 className="h-12 w-12 text-yellow-400 mx-auto mb-4" />
                 <h3 className="text-xl font-bold text-white mb-4">Ground-Up Construction</h3>
                 <p className="text-slate-300 mb-6">
@@ -63,7 +63,7 @@ export default function HomePage() {
             </Link>
 
             <Link href="/services#interior-finish-outs" className="group">
-              <div className="bg-slate-700/50 backdrop-blur-sm border border-slate-600 p-8 rounded-lg text-center group-hover:bg-slate-600/50 transition-all">
+              <div className="bg-slate-700/50 backdrop-blur-sm border border-slate-600 p-8 rounded-lg text-center group-hover:bg-slate-600/50 transition-all h-full">
                 <Cog className="h-12 w-12 text-yellow-400 mx-auto mb-4" />
                 <h3 className="text-xl font-bold text-white mb-4">Interior Finish-Outs</h3>
                 <p className="text-slate-300 mb-6">Transform raw shells into branded, functional environments.</p>
@@ -120,8 +120,8 @@ export default function HomePage() {
       <section className="py-20 bg-slate-800">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-            <div className="relative h-96 rounded-lg overflow-hidden">
-              <Image src="/images/project-management.jpeg" alt="Construction Process" fill className="object-cover" />
+            <div className="relative h-96 rounded-lg overflow-hidden bg-slate-700">
+              <Image src="/images/project-management.jpeg" alt="Construction Process" fill className="object-contain p-4" />
             </div>
             <div>
               <h2 className="text-4xl font-bold text-white mb-6">Our Proven Process</h2>
@@ -181,11 +181,11 @@ export default function HomePage() {
               construction vision to life with integrity, precision, and Texas pride.
             </p>
             <a
-              href="tel:210-555-0123"
+              href="tel:210-632-7430"
               className="inline-flex items-center gap-2 bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-4 rounded-lg font-semibold transition-colors text-lg"
             >
               <Phone className="h-5 w-5" />
-              Call (210) 555-0123
+              Call (210) 632-7430
             </a>
           </div>
         </div>

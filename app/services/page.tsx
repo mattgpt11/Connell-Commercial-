@@ -3,7 +3,7 @@ import Footer from "@/components/footer"
 import Image from "next/image"
 import Link from "next/link"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Building2, Hammer, RefreshCw, Coffee, Building, ClipboardCheck } from "lucide-react"
+import { Building2, Hammer, RefreshCw, Coffee, Building, ClipboardCheck, Shield, Zap, Award } from "lucide-react"
 
 const services = [
   {
@@ -163,7 +163,7 @@ export default function ServicesPage() {
             <div className="grid md:grid-cols-3 gap-8">
               <div className="text-center">
                 <div className="w-16 h-16 bg-yellow-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-2xl">🎖️</span>
+                  <Shield className="h-8 w-8 text-yellow-400" />
                 </div>
                 <h4 className="text-xl font-bold text-white mb-4">Veteran Precision</h4>
                 <p className="text-slate-300 leading-relaxed">
@@ -173,7 +173,7 @@ export default function ServicesPage() {
               </div>
               <div className="text-center">
                 <div className="w-16 h-16 bg-yellow-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-2xl">⚡</span>
+                  <Zap className="h-8 w-8 text-yellow-400" />
                 </div>
                 <h4 className="text-xl font-bold text-white mb-4">Licensed & Insured</h4>
                 <p className="text-slate-300 leading-relaxed">
@@ -182,7 +182,7 @@ export default function ServicesPage() {
               </div>
               <div className="text-center">
                 <div className="w-16 h-16 bg-yellow-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-2xl">🏆</span>
+                  <Award className="h-8 w-8 text-yellow-400" />
                 </div>
                 <h4 className="text-xl font-bold text-white mb-4">Proven Excellence</h4>
                 <p className="text-slate-300 leading-relaxed">
@@ -258,10 +258,10 @@ export default function ServicesPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
-                  href="tel:210-555-0123"
+                  href="tel:210-632-7430"
                   className="bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-4 rounded-lg font-semibold transition-colors text-lg"
                 >
-                  Call (210) 555-0123
+                  Call (210) 632-7430
                 </a>
                 <Link
                   href="/contact"

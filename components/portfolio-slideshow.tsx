@@ -9,46 +9,42 @@ const portfolioItems = [
     id: 1,
     title: "Barnes & Noble Retail Build-Out",
     category: "Ground-up construction",
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Barnes%20and%20nobel-PquaUQi9qEROLy4b1k5mRmicB8w5N7.jpg",
+    image: "/images/barnes-and-nobel.jpg",
     description: "Large-scale retail construction with underground utilities and site preparation",
   },
   {
     id: 2,
     title: "Tesla Facility Restrooms",
     category: "Interior construction",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Tesla%201-xserXkmrutESlwRF0QU4rybGE1fnBb.jpg",
+    image: "/images/tesla-1.jpg",
     description: "Commercial restroom installation with custom tile work and plumbing systems",
   },
   {
     id: 3,
     title: "Bexar County Fire Station",
     category: "Government construction",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Bexar%20fire-GmpSAF7YPX1yY4pwz8tuAwz8WrQzO3.jpg",
+    image: "/images/bexar-fire.jpg",
     description: "Fire station build with comprehensive HVAC ductwork and mechanical systems",
   },
   {
     id: 4,
     title: "Boerne Aquatic Center",
     category: "Municipal projects",
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Boerne%20aquatic-rlVgpcptaoJRWnRpTq8FW2zqeb4amu.jpg",
+    image: "/images/boerne-aquatic.jpg",
     description: "Outdoor utility infrastructure for aquatic facility with extensive underground piping",
   },
   {
     id: 5,
     title: "Guardian House Renovation",
     category: "Remodel & renovation",
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Guardian%20House-R9W8fTnaF8A4CJwU6RcO3Tg2WRPSOO.jpg",
+    image: "/images/guardian-house.jpg",
     description: "Interior renovation featuring radiant floor heating installation and modern finishes",
   },
   {
     id: 6,
     title: "Harmony Odessa Facility",
     category: "Interior construction",
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Harmony%20odessa-WyEF8ptHcXBigiFZ3UoCOx6FstgNNR.jpg",
+    image: "/images/harmony-odessa.jpg",
     description: "Commercial facility with exposed structural systems and comprehensive mechanical work",
   },
 ]
@@ -86,20 +82,18 @@ export default function PortfolioSlideshow() {
   return (
     <div className="relative max-w-6xl mx-auto">
       {/* Main Slideshow */}
-      <div className="relative h-96 md:h-[500px] rounded-lg overflow-hidden group">
+      <div className="relative w-full group bg-slate-900 overflow-hidden">
         {portfolioItems.map((item, index) => (
           <div
             key={item.id}
-            className={`absolute inset-0 transition-opacity duration-500 ${
-              index === currentSlide ? "opacity-100" : "opacity-0"
+            className={`w-full transition-opacity duration-500 ${
+              index === currentSlide ? "relative opacity-100" : "absolute inset-0 opacity-0 pointer-events-none"
             }`}
           >
-            <Image
+            <img
               src={item.image || "/placeholder.svg"}
               alt={item.title}
-              fill
-              className="object-cover"
-              priority={index === 0}
+              className="w-full h-auto block"
             />
             <div className="absolute inset-0 bg-black/40" />
             <div className="absolute bottom-0 left-0 right-0 p-8 text-white">

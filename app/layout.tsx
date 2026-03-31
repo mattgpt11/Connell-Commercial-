@@ -39,12 +39,21 @@ export const metadata: Metadata = {
     description:
       "Veteran-owned general contractor delivering superior commercial construction services in San Antonio, Texas. Licensed, insured, and committed to building the future while honoring the past.",
     siteName: "Connell Commercial",
+    images: [
+      {
+        url: "/images/connell-logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Connell Commercial - Veteran-Owned General Contractor",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Connell Commercial - Licensed General Contractor | San Antonio, Texas",
     description:
       "Veteran-owned general contractor delivering superior commercial construction services in San Antonio, Texas.",
+    images: ["/images/connell-logo.png"],
   },
   viewport: {
     width: "device-width",

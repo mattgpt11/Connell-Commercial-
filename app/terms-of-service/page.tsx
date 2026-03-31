@@ -120,7 +120,7 @@ export default function TermsOfServicePage() {
                       <strong>Connell Commercial</strong>
                     </p>
                     <p>Email: info@connellcommercial.com</p>
-                    <p>Phone: (210) 555-0123</p>
+                    <p>Phone: (210) 632-7430</p>
                     <p>Address: San Antonio, Texas</p>
                   </div>
                 </div>
