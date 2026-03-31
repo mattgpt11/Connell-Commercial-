@@ -170,6 +170,26 @@ export default function Footer() {
             </Link>
           </div>
         </div>
+
+        {/* Built By Credit */}
+        <div className="border-t border-gray-700 mt-8 pt-6 flex justify-center items-center">
+          <a
+            href="https://truepricewebsites.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-gray-500 hover:text-gray-300 transition-colors text-sm"
+          >
+            <span>Built by</span>
+            <Image
+              src="/images/true-price-logo.png"
+              alt="True Price Websites"
+              width={20}
+              height={20}
+              className="h-5 w-5"
+            />
+            <span>True Price Websites</span>
+          </a>
+        </div>
       </div>
     </footer>
   )
