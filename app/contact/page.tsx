@@ -1,69 +1,10 @@
-'use client'
-
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import Image from "next/image"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Phone, Mail, MapPin, Clock, Send, Printer, Shield, Zap, Award } from "lucide-react"
-import { useState, useRef } from "react"
-import { useTransition } from "react"
-
-async function submitContactForm(formData: FormData) {
-  const data = {
-    firstName: formData.get('firstName'),
-    lastName: formData.get('lastName'),
-    email: formData.get('email'),
-    phone: formData.get('phone') || undefined,
-    service: formData.get('service') || undefined,
-    projectType: formData.get('projectType') || undefined,
-    budget: formData.get('budget') || undefined,
-    timeline: formData.get('timeline') || undefined,
-    message: formData.get('message'),
-  }
-
-  const response = await fetch('/api/contact', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  })
-
-  return response.json()
-}
 
 export default function ContactPage() {
-  const formRef = useRef<HTMLFormElement>(null)
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
-  const [submitMessage, setSubmitMessage] = useState('')
-  const [isPending, startTransition] = useTransition()
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setSubmitStatus('idle')
-
-    const formElement = e.currentTarget
-    const formData = new FormData(formElement)
-
-    startTransition(async () => {
-      try {
-        const result = await submitContactForm(formData)
-        if (result.success) {
-          setSubmitStatus('success')
-          setSubmitMessage('Thank you! Your message has been sent successfully. We will get back to you within 24 hours.')
-          formElement.reset()
-        } else {
-          setSubmitStatus('error')
-          setSubmitMessage(result.error || 'Failed to send message. Please try again or contact us directly.')
-        }
-      } catch (error) {
-        console.error('Error submitting form:', error)
-        setSubmitStatus('error')
-        setSubmitMessage('An error occurred. Please try again or contact us directly.')
-      }
-    })
-  }
-
   return (
     <div className="min-h-screen bg-slate-800">
       <Navigation />
@@ -194,17 +135,7 @@ export default function ContactPage() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  {submitStatus === 'success' && (
-                    <div className="mb-6 p-4 bg-green-600/20 border border-green-600 rounded-lg text-green-100">
-                      <p>{submitMessage}</p>
-                    </div>
-                  )}
-                  {submitStatus === 'error' && (
-                    <div className="mb-6 p-4 bg-red-600/20 border border-red-600 rounded-lg text-red-100">
-                      <p>{submitMessage}</p>
-                    </div>
-                  )}
-                  <form className="space-y-6" onSubmit={handleSubmit}>
+                  <form className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-4">
                       <div>
                         <label htmlFor="firstName" className="block text-sm font-medium text-white mb-2">
@@ -357,11 +288,10 @@ export default function ContactPage() {
 
                     <button
                       type="submit"
-                      disabled={isPending}
-                      className="w-full bg-yellow-500 hover:bg-yellow-600 disabled:bg-yellow-700 disabled:cursor-not-allowed text-white px-6 py-3 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
+                      className="w-full bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
                     >
                       <Send className="h-5 w-5" />
-                      {isPending ? 'Sending...' : 'Send Message'}
+                      Send Message
                     </button>
 
                     <p className="text-slate-400 text-sm text-center">
