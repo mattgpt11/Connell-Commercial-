@@ -5,55 +5,63 @@ import Footer from "@/components/footer"
 import Image from "next/image"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Phone, Mail, MapPin, Clock, Send, Printer, Shield, Zap, Award } from "lucide-react"
-import { useState } from "react"
+import { useState, useRef } from "react"
+import { useTransition } from "react"
+
+async function submitContactForm(formData: FormData) {
+  const data = {
+    firstName: formData.get('firstName'),
+    lastName: formData.get('lastName'),
+    email: formData.get('email'),
+    phone: formData.get('phone') || undefined,
+    service: formData.get('service') || undefined,
+    projectType: formData.get('projectType') || undefined,
+    budget: formData.get('budget') || undefined,
+    timeline: formData.get('timeline') || undefined,
+    message: formData.get('message'),
+  }
+
+  const response = await fetch('/api/contact', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  })
+
+  return response.json()
+}
 
 export default function ContactPage() {
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const formRef = useRef<HTMLFormElement>(null)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const [submitMessage, setSubmitMessage] = useState('')
+  const [isPending, startTransition] = useTransition()
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setIsSubmitting(true)
     setSubmitStatus('idle')
 
-    const formData = new FormData(e.currentTarget)
-    const data = {
-      firstName: formData.get('firstName'),
-      lastName: formData.get('lastName'),
-      email: formData.get('email'),
-      phone: formData.get('phone'),
-      service: formData.get('service'),
-      projectType: formData.get('projectType'),
-      budget: formData.get('budget'),
-      timeline: formData.get('timeline'),
-      message: formData.get('message'),
-    }
+    const formElement = e.currentTarget
+    const formData = new FormData(formElement)
 
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      })
-
-      if (response.ok) {
-        setSubmitStatus('success')
-        setSubmitMessage('Thank you! Your message has been sent successfully. We will get back to you within 24 hours.')
-        e.currentTarget.reset()
-      } else {
+    startTransition(async () => {
+      try {
+        const result = await submitContactForm(formData)
+        if (result.success) {
+          setSubmitStatus('success')
+          setSubmitMessage('Thank you! Your message has been sent successfully. We will get back to you within 24 hours.')
+          formElement.reset()
+        } else {
+          setSubmitStatus('error')
+          setSubmitMessage(result.error || 'Failed to send message. Please try again or contact us directly.')
+        }
+      } catch (error) {
+        console.error('Error submitting form:', error)
         setSubmitStatus('error')
-        setSubmitMessage('Failed to send message. Please try again or contact us directly.')
+        setSubmitMessage('An error occurred. Please try again or contact us directly.')
       }
-    } catch (error) {
-      console.error('Error submitting form:', error)
-      setSubmitStatus('error')
-      setSubmitMessage('An error occurred. Please try again or contact us directly.')
-    } finally {
-      setIsSubmitting(false)
-    }
+    })
   }
 
   return (
@@ -349,11 +357,11 @@ export default function ContactPage() {
 
                     <button
                       type="submit"
-                      disabled={isSubmitting}
+                      disabled={isPending}
                       className="w-full bg-yellow-500 hover:bg-yellow-600 disabled:bg-yellow-700 disabled:cursor-not-allowed text-white px-6 py-3 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
                     >
                       <Send className="h-5 w-5" />
-                      {isSubmitting ? 'Sending...' : 'Send Message'}
+                      {isPending ? 'Sending...' : 'Send Message'}
                     </button>
 
                     <p className="text-slate-400 text-sm text-center">
