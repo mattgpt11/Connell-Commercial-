@@ -1,31 +1,31 @@
 'use client'
 
 import { Send } from "lucide-react"
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { submitContactForm } from './actions'
 
 export default function ContactPage() {
+  const formRef = useRef<HTMLFormElement>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const [submitMessage, setSubmitMessage] = useState('')
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+  const handleSubmit = async (formElement: HTMLFormElement) => {
     setIsSubmitting(true)
     setSubmitStatus('idle')
 
     try {
-      const formData = new FormData(e.currentTarget)
+      const formData = new FormData(formElement)
       const data = {
-        firstName: String(formData.get('firstName')),
-        lastName: String(formData.get('lastName')),
-        email: String(formData.get('email')),
+        firstName: String(formData.get('firstName') || ''),
+        lastName: String(formData.get('lastName') || ''),
+        email: String(formData.get('email') || ''),
         phone: formData.get('phone') ? String(formData.get('phone')) : undefined,
         service: formData.get('service') ? String(formData.get('service')) : undefined,
         projectType: formData.get('projectType') ? String(formData.get('projectType')) : undefined,
         budget: formData.get('budget') ? String(formData.get('budget')) : undefined,
         timeline: formData.get('timeline') ? String(formData.get('timeline')) : undefined,
-        message: String(formData.get('message')),
+        message: String(formData.get('message') || ''),
       }
 
       const result = await submitContactForm(data)
@@ -33,13 +33,13 @@ export default function ContactPage() {
       if (result.success) {
         setSubmitStatus('success')
         setSubmitMessage('Thank you! Your message has been sent successfully. We will get back to you within 24 hours.')
-        e.currentTarget.reset()
+        formElement.reset()
       } else {
         setSubmitStatus('error')
         setSubmitMessage(result.error || 'Failed to send message. Please try again or contact us directly.')
       }
     } catch (error) {
-      console.error('Error submitting form:', error)
+      console.error('[v0] Error submitting form:', error)
       setSubmitStatus('error')
       setSubmitMessage('An error occurred. Please try again or contact us directly.')
     } finally {
@@ -63,7 +63,7 @@ export default function ContactPage() {
           </div>
         )}
         
-        <form className="space-y-6 bg-slate-700 p-6 rounded-lg" onSubmit={handleSubmit}>
+        <form ref={formRef} className="space-y-6 bg-slate-700 p-6 rounded-lg">
           <div className="grid md:grid-cols-2 gap-4">
             <div>
               <label htmlFor="firstName" className="block text-sm font-medium text-white mb-2">
@@ -151,8 +151,13 @@ export default function ContactPage() {
           </div>
 
           <button
-            type="submit"
+            type="button"
             disabled={isSubmitting}
+            onClick={() => {
+              if (formRef.current) {
+                handleSubmit(formRef.current)
+              }
+            }}
             className="w-full bg-yellow-500 hover:bg-yellow-600 disabled:bg-yellow-700 disabled:cursor-not-allowed text-white px-6 py-3 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
           >
             <Send className="h-5 w-5" />

@@ -31,6 +31,14 @@ export async function submitContactForm(data: ContactFormData) {
       }
     }
 
+    // Check if API key is present
+    if (!process.env.RESEND_API_KEY) {
+      return {
+        success: false,
+        error: 'Email service is not configured',
+      }
+    }
+
     // Format the email body
     const emailBody = `
 New Contact Form Submission from Connell Commercial Website
@@ -61,7 +69,6 @@ Reply to: ${email}
     })
 
     if (result.error) {
-      console.error('Resend error:', result.error)
       return {
         success: false,
         error: 'Failed to send email',
