@@ -3,7 +3,6 @@ import Footer from "@/components/footer"
 import Image from "next/image"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Phone, Mail, MapPin, Clock, Send, Printer, Shield, Zap, Award } from "lucide-react"
-import ContactForm from "./contact-form"
 
 export default function ContactPage() {
   return (
