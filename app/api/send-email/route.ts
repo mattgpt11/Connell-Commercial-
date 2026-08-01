@@ -1,7 +1,5 @@
-import { Resend } from 'resend'
 import { NextRequest, NextResponse } from 'next/server'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
 const FROM_EMAIL = 'Connell Commercial <forms@truepricewebsites.com>'
 const TO_EMAIL = 'info@connellcommercial.com'
 
@@ -53,38 +51,52 @@ export async function POST(request: NextRequest) {
       <p>Best regards,<br/>The Connell Commercial Team</p>
     `
 
-    // Send email to business
+    // Send email to business via Resend API
     console.log('[v0] Sending email to business:', TO_EMAIL)
-    const businessEmailResponse = await resend.emails.send({
-      from: FROM_EMAIL,
-      to: TO_EMAIL,
-      replyTo: email,
-      subject: `New Contact Form: ${firstName} ${lastName}`,
-      html: businessEmailContent,
+    const businessEmailRes = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+      },
+      body: JSON.stringify({
+        from: FROM_EMAIL,
+        to: TO_EMAIL,
+        replyTo: email,
+        subject: `New Contact Form: ${firstName} ${lastName}`,
+        html: businessEmailContent,
+      }),
     })
-    console.log('[v0] Business email response:', businessEmailResponse)
 
-    if (businessEmailResponse.error) {
-      console.error('[v0] Error sending business email:', businessEmailResponse.error)
+    const businessEmailData = await businessEmailRes.json()
+    console.log('[v0] Business email response:', businessEmailData)
+
+    if (!businessEmailRes.ok) {
+      console.error('[v0] Error sending business email:', businessEmailData)
       return NextResponse.json(
-        { error: `Failed to send email: ${businessEmailResponse.error.message}` },
+        { error: `Failed to send email: ${businessEmailData.message || 'Unknown error'}` },
         { status: 500 }
       )
     }
 
-    // Send confirmation email to client
+    // Send confirmation email to client via Resend API
     console.log('[v0] Sending confirmation email to:', email)
-    const clientEmailResponse = await resend.emails.send({
-      from: FROM_EMAIL,
-      to: email,
-      subject: 'We Received Your Message - Connell Commercial',
-      html: clientEmailContent,
+    const clientEmailRes = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+      },
+      body: JSON.stringify({
+        from: FROM_EMAIL,
+        to: email,
+        subject: 'We Received Your Message - Connell Commercial',
+        html: clientEmailContent,
+      }),
     })
-    console.log('[v0] Client email response:', clientEmailResponse)
 
-    if (clientEmailResponse.error) {
-      console.error('[v0] Error sending client email:', clientEmailResponse.error)
-    }
+    const clientEmailData = await clientEmailRes.json()
+    console.log('[v0] Client email response:', clientEmailData)
 
     return NextResponse.json(
       { success: true, message: 'Email sent successfully' },
