@@ -19,15 +19,6 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Check if RESEND_API_KEY is configured
-    if (!process.env.RESEND_API_KEY) {
-      console.error('[v0] RESEND_API_KEY is not configured')
-      return NextResponse.json(
-        { error: 'Email service not configured' },
-        { status: 500 }
-      )
-    }
-
     // Email to business
     const businessEmailContent = `
       <h2>New Contact Form Submission</h2>
