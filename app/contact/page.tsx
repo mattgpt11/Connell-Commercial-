@@ -1,3 +1,6 @@
+'use client'
+
+import { useState } from 'react'
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import Image from "next/image"
@@ -5,6 +8,51 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Phone, Mail, MapPin, Clock, Send, Printer, Shield, Zap, Award } from "lucide-react"
 
 export default function ContactPage() {
+  const [isLoading, setIsLoading] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [submitMessage, setSubmitMessage] = useState('')
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setIsLoading(true)
+    setSubmitStatus('idle')
+
+    const formData = new FormData(e.currentTarget)
+    const data = {
+      firstName: formData.get('firstName'),
+      lastName: formData.get('lastName'),
+      email: formData.get('email'),
+      phone: formData.get('phone'),
+      service: formData.get('service'),
+      projectType: formData.get('projectType'),
+      budget: formData.get('budget'),
+      timeline: formData.get('timeline'),
+      message: formData.get('message'),
+    }
+
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+
+      if (response.ok) {
+        setSubmitStatus('success')
+        setSubmitMessage('Thank you! Your message has been sent successfully. We will contact you within 24 hours.')
+        ;(e.target as HTMLFormElement).reset()
+      } else {
+        setSubmitStatus('error')
+        setSubmitMessage('Failed to send your message. Please try again or call us directly.')
+      }
+    } catch (error) {
+      setSubmitStatus('error')
+      setSubmitMessage('An error occurred. Please try again or call us directly at (210) 632-7430.')
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
   return (
     <div className="min-h-screen bg-slate-800">
       <Navigation />
@@ -135,7 +183,17 @@ export default function ContactPage() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <form className="space-y-6">
+                  {submitStatus === 'success' && (
+                    <div className="mb-6 p-4 bg-green-500/20 border border-green-500 rounded-lg">
+                      <p className="text-green-400 font-semibold">{submitMessage}</p>
+                    </div>
+                  )}
+                  {submitStatus === 'error' && (
+                    <div className="mb-6 p-4 bg-red-500/20 border border-red-500 rounded-lg">
+                      <p className="text-red-400 font-semibold">{submitMessage}</p>
+                    </div>
+                  )}
+                  <form className="space-y-6" onSubmit={handleSubmit}>
                     <div className="grid md:grid-cols-2 gap-4">
                       <div>
                         <label htmlFor="firstName" className="block text-sm font-medium text-white mb-2">
@@ -288,10 +346,11 @@ export default function ContactPage() {
 
                     <button
                       type="submit"
-                      className="w-full bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
+                      disabled={isLoading}
+                      className="w-full bg-yellow-500 hover:bg-yellow-600 disabled:bg-yellow-700 disabled:opacity-50 text-white px-6 py-3 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
                     >
                       <Send className="h-5 w-5" />
-                      Send Message
+                      {isLoading ? 'Sending...' : 'Send Message'}
                     </button>
 
                     <p className="text-slate-400 text-sm text-center">

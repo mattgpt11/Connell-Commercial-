@@ -1,5 +1,9 @@
-import nodemailer from 'nodemailer'
+import { Resend } from 'resend'
 import { NextRequest, NextResponse } from 'next/server'
+
+const resend = new Resend(process.env.RESEND_API_KEY)
+const FROM_EMAIL = 'Connell Commercial <forms@truepricewebsites.com>'
+const TO_EMAIL = 'info@connellcommercial.com'
 
 export async function POST(request: NextRequest) {
   try {
@@ -13,17 +17,6 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       )
     }
-
-    // Create Outlook SMTP transporter
-    const transporter = nodemailer.createTransport({
-      host: 'smtp.office365.com',
-      port: 587,
-      secure: false,
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASSWORD,
-      },
-    })
 
     // Email to business
     const businessEmailContent = `
@@ -49,17 +42,17 @@ export async function POST(request: NextRequest) {
     `
 
     // Send email to business
-    await transporter.sendMail({
-      from: process.env.SMTP_USER,
-      to: 'info@connellcommercial.com',
+    await resend.emails.send({
+      from: FROM_EMAIL,
+      to: TO_EMAIL,
+      replyTo: email,
       subject: `New Contact Form: ${firstName} ${lastName}`,
       html: businessEmailContent,
-      replyTo: email,
     })
 
     // Send confirmation email to client
-    await transporter.sendMail({
-      from: process.env.SMTP_USER,
+    await resend.emails.send({
+      from: FROM_EMAIL,
       to: email,
       subject: 'We Received Your Message - Connell Commercial',
       html: clientEmailContent,
