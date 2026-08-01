@@ -31,16 +31,13 @@ export default function ContactPage() {
     }
 
     try {
-      console.log('[v0] Submitting form data:', data)
       const response = await fetch('/api/send-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       })
 
-      console.log('[v0] API response status:', response.status)
       const responseData = await response.json()
-      console.log('[v0] API response data:', responseData)
 
       if (response.ok) {
         setSubmitStatus('success')
@@ -50,10 +47,8 @@ export default function ContactPage() {
         setSubmitStatus('error')
         const errorMsg = responseData?.error || 'Failed to send your message. Please try again or call us directly.'
         setSubmitMessage(errorMsg)
-        console.error('[v0] API error:', errorMsg)
       }
     } catch (error) {
-      console.error('[v0] Client error:', error)
       setSubmitStatus('error')
       setSubmitMessage('An error occurred. Please try again or call us directly at (210) 632-7430.')
     } finally {
