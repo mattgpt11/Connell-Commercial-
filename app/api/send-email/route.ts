@@ -9,6 +9,9 @@ export async function POST(request: Request) {
 
   try {
     const apiKey = process.env.RESEND_API_KEY
+    console.log('[v0] RESEND_API_KEY exists:', !!apiKey)
+    console.log('[v0] API Key length:', apiKey?.length)
+    console.log('[v0] API Key starts with re_:', apiKey?.startsWith('re_'))
     
     // Send to business
     const res1 = await fetch('https://api.resend.com/emails', {
@@ -39,8 +42,11 @@ export async function POST(request: Request) {
 
     if (!res1.ok) {
       const err = await res1.json()
+      console.log('[v0] Resend API error:', { status: res1.status, error: err })
       return NextResponse.json({ error: err.message || 'Failed to send' }, { status: 500 })
     }
+    
+    console.log('[v0] Business email sent successfully')
 
     // Send confirmation to user
     await fetch('https://api.resend.com/emails', {
