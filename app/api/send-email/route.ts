@@ -8,8 +8,7 @@ export async function POST(request: Request) {
   }
 
   try {
-    const apiKey = process.env.RESEND_API_KEY?.trim()
-    console.log('[v0] API Key check:', apiKey ? `Found - starts with ${apiKey.substring(0, 5)}` : 'MISSING')
+    const apiKey = process.env.RESEND_API_KEY
     
     // Send to business
     const res1 = await fetch('https://api.resend.com/emails', {
