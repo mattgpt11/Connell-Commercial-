@@ -10,11 +10,23 @@ export async function POST(request: NextRequest) {
     const body = await request.json()
     const { firstName, lastName, email, phone, service, projectType, budget, timeline, message } = body
 
+    console.log('[v0] Form submission received:', { firstName, lastName, email })
+
     // Validate required fields
     if (!firstName || !lastName || !email || !message) {
+      console.error('[v0] Missing required fields:', { firstName, lastName, email, message })
       return NextResponse.json(
         { error: 'Missing required fields' },
         { status: 400 }
+      )
+    }
+
+    // Check if RESEND_API_KEY is configured
+    if (!process.env.RESEND_API_KEY) {
+      console.error('[v0] RESEND_API_KEY is not configured')
+      return NextResponse.json(
+        { error: 'Email service not configured' },
+        { status: 500 }
       )
     }
 
@@ -42,30 +54,47 @@ export async function POST(request: NextRequest) {
     `
 
     // Send email to business
-    await resend.emails.send({
+    console.log('[v0] Sending email to business:', TO_EMAIL)
+    const businessEmailResponse = await resend.emails.send({
       from: FROM_EMAIL,
       to: TO_EMAIL,
       replyTo: email,
       subject: `New Contact Form: ${firstName} ${lastName}`,
       html: businessEmailContent,
     })
+    console.log('[v0] Business email response:', businessEmailResponse)
+
+    if (businessEmailResponse.error) {
+      console.error('[v0] Error sending business email:', businessEmailResponse.error)
+      return NextResponse.json(
+        { error: `Failed to send email: ${businessEmailResponse.error.message}` },
+        { status: 500 }
+      )
+    }
 
     // Send confirmation email to client
-    await resend.emails.send({
+    console.log('[v0] Sending confirmation email to:', email)
+    const clientEmailResponse = await resend.emails.send({
       from: FROM_EMAIL,
       to: email,
       subject: 'We Received Your Message - Connell Commercial',
       html: clientEmailContent,
     })
+    console.log('[v0] Client email response:', clientEmailResponse)
+
+    if (clientEmailResponse.error) {
+      console.error('[v0] Error sending client email:', clientEmailResponse.error)
+    }
 
     return NextResponse.json(
       { success: true, message: 'Email sent successfully' },
       { status: 200 }
     )
   } catch (error) {
-    console.error('Email sending error:', error)
+    console.error('[v0] Email sending error:', error)
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error'
     return NextResponse.json(
-      { error: 'Failed to send email' },
+      { error: `Failed to send email: ${errorMessage}` },
       { status: 500 }
     )
   }
