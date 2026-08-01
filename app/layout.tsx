@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Inter, Playfair_Display } from "next/font/google"
+import Script from "next/script"
 import "./globals.css"
 import ScrollToTop from "@/components/scroll-to-top"
 
@@ -73,6 +74,16 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/images/connell-logo-icon.png" />
         <link rel="apple-touch-icon" href="/images/connell-logo-icon.png" />
+        {/* Google Analytics */}
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-BTP7P09D9H" />
+        <Script id="google-analytics">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-BTP7P09D9H');
+          `}
+        </Script>
       </head>
       <body className={`${inter.className} ${playfair.variable}`}>
         <ScrollToTop />
