@@ -8,12 +8,15 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
     }
 
+    const key = process.env.RESEND_API_KEY
+    console.log('[v0] API Key present:', !!key, 'First 10 chars:', key?.substring(0, 10))
+
     // Send to business
     const res1 = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+        Authorization: `Bearer ${key}`,
       },
       body: JSON.stringify({
         from: 'Connell Commercial <forms@truepricewebsites.com>',
@@ -45,7 +48,7 @@ export async function POST(request: Request) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+        Authorization: `Bearer ${key}`,
       },
       body: JSON.stringify({
         from: 'Connell Commercial <forms@truepricewebsites.com>',
