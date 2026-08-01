@@ -8,12 +8,15 @@ export async function POST(request: Request) {
   }
 
   try {
+    const apiKey = process.env.RESEND_API_KEY?.trim()
+    console.log('[v0] API Key check:', apiKey ? `Found - starts with ${apiKey.substring(0, 5)}` : 'MISSING')
+    
     // Send to business
     const res1 = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+        Authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
         from: 'Connell Commercial <forms@truepricewebsites.com>',
@@ -45,7 +48,7 @@ export async function POST(request: Request) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+        Authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
         from: 'Connell Commercial <forms@truepricewebsites.com>',
