@@ -9,6 +9,9 @@ export async function POST(request: Request) {
     }
 
     const apiKey = process.env.RESEND_API_KEY
+    console.log('[v0] RESEND_API_KEY exists:', !!apiKey)
+    console.log('[v0] RESEND_API_KEY length:', apiKey?.length)
+    
     if (!apiKey) {
       return NextResponse.json({ error: 'Email service not configured' }, { status: 500 })
     }
@@ -42,8 +45,11 @@ export async function POST(request: Request) {
 
     if (!res1.ok) {
       const errData = await res1.json()
+      console.log('[v0] Resend error response:', { status: res1.status, error: errData })
       return NextResponse.json({ error: errData.message || 'Failed to send email' }, { status: 500 })
     }
+    
+    console.log('[v0] Business email sent successfully')
 
     // Send confirmation to user
     await fetch('https://api.resend.com/emails', {
