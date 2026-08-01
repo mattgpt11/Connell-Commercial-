@@ -9,7 +9,6 @@ export async function POST(request: Request) {
     }
 
     const key = process.env.RESEND_API_KEY
-    console.log('[v0] API Key present:', !!key, 'First 10 chars:', key?.substring(0, 10))
 
     // Send to business
     const res1 = await fetch('https://api.resend.com/emails', {
@@ -42,27 +41,6 @@ export async function POST(request: Request) {
       const errData = await res1.json()
       return NextResponse.json({ error: errData.message || 'Failed to send email' }, { status: 500 })
     }
-
-    // Send confirmation to user
-    await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${key}`,
-      },
-      body: JSON.stringify({
-        from: 'Connell Commercial <forms@truepricewebsites.com>',
-        to: email,
-        subject: 'We Received Your Message - Connell Commercial',
-        html: `
-          <h2>Thank You for Contacting Connell Commercial</h2>
-          <p>Dear ${firstName},</p>
-          <p>We have received your project inquiry and appreciate your interest in Connell Commercial. Our team will review your submission and get back to you within 24 hours with more information.</p>
-          <p>If you have any urgent questions, please call us at (210) 632-7430.</p>
-          <p>Best regards,<br/>The Connell Commercial Team</p>
-        `,
-      }),
-    })
 
     return NextResponse.json({ success: true })
   } catch (err) {
