@@ -5,16 +5,8 @@ const TO_EMAIL = 'info@connellcommercial.com'
 
 export async function POST(request: NextRequest) {
   try {
-    const apiKey = process.env.RESEND_API_KEY?.trim()
-    console.log('[v0] API Key status:', apiKey ? `present (${apiKey.substring(0, 5)}...)` : 'missing')
-    
-    if (!apiKey) {
-      console.error('[v0] RESEND_API_KEY is missing or empty')
-      return NextResponse.json(
-        { error: 'Email service not configured' },
-        { status: 500 }
-      )
-    }
+    const apiKey = process.env.RESEND_API_KEY
+    console.log('[v0] API Key available:', !!apiKey)
     
     const body = await request.json()
     const { firstName, lastName, email, phone, service, projectType, budget, timeline, message } = body
