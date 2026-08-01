@@ -20,6 +20,8 @@ export async function submitContactForm(formData: {
     // Initialize Resend with API key from environment
     const apiKey = process.env.RESEND_API_KEY
     if (!apiKey) {
+      console.error('[v0] RESEND_API_KEY is missing from environment')
+      console.error('[v0] Available env keys:', Object.keys(process.env).filter(k => k.includes('RESEND') || k.includes('API')))
       return {
         success: false,
         error: 'Email service configuration error. Please contact support.',
