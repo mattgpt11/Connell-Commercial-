@@ -5,6 +5,9 @@ const TO_EMAIL = 'info@connellcommercial.com'
 
 export async function POST(request: NextRequest) {
   try {
+    const apiKey = process.env.RESEND_API_KEY
+    console.log('[v0] API Key status:', apiKey ? `present (${apiKey.substring(0, 5)}...)` : 'missing')
+    
     const body = await request.json()
     const { firstName, lastName, email, phone, service, projectType, budget, timeline, message } = body
 
@@ -48,7 +51,7 @@ export async function POST(request: NextRequest) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+        Authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
         from: FROM_EMAIL,
@@ -76,7 +79,7 @@ export async function POST(request: NextRequest) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+        Authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
         from: FROM_EMAIL,
