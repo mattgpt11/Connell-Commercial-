@@ -60,7 +60,7 @@ export default function ContactPage() {
       
       <div className="max-w-4xl mx-auto px-4 py-12">
         <h1 className="text-4xl font-bold text-white mb-4">Request a Quote</h1>
-        <p className="text-slate-300 mb-8">Fill out the form below and we'll get back to you within 24 hours with a detailed quote for your project.</p>
+        <p className="text-slate-300 mb-8">Fill out the form below and we&apos;ll get back to you within 24 hours with a detailed quote for your project.</p>
         
         {submitStatus === 'success' && (
           <div className="mb-6 p-4 bg-green-600/20 border border-green-600 rounded-lg text-green-100">
