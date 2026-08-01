@@ -2,7 +2,6 @@
 
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
 const FROM_EMAIL = 'Connell Commercial Website <forms@truepricewebsites.com>'
 const TO_EMAIL = 'info@connellcommercial.com'
 
@@ -18,6 +17,17 @@ export async function submitContactForm(formData: {
   message: string
 }) {
   try {
+    // Initialize Resend with API key from environment
+    const apiKey = process.env.RESEND_API_KEY
+    if (!apiKey) {
+      return {
+        success: false,
+        error: 'Email service configuration error. Please contact support.',
+      }
+    }
+
+    const resend = new Resend(apiKey)
+
     // Format the email content
     const emailContent = `
 New Contact Form Submission
